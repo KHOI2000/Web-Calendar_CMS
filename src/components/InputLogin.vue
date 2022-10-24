@@ -8,6 +8,7 @@
       class="input"
       v-bind:type="isPwd ? 'password' : 'text'"
       :model-value="modelValue"
+      :rules="[(val) => (val && val.length > 0) || 'Please type something']"
     >
       <div class="label">{{ label }}</div>
       <template v-slot:append v-if="showPassword">
@@ -69,12 +70,13 @@ export default defineComponent({
 .label {
   z-index: 999;
   position: absolute;
-  top: -1.3rem;
+  top: -1rem;
   left: 0.8rem;
   background-color: white;
-  padding: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
   color: #22313f;
-  font-size: 15px;
+  font-size: 16px;
 }
 .container {
   margin: 30px;

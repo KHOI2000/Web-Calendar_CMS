@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useAlertStore } from "src/stores/alert.store";
 import router from "src/router";
 import { fetchWrapper } from "src/helpers";
+import { Notify } from "quasar";
 
 const baseUrl = `${fetchWrapper.apiUrl}/cms/auth`;
 
@@ -27,10 +28,26 @@ export const useAuthStore = defineStore({
 
         // redirect to previous url or default to home page
         console.log(user);
+        Notify.create({
+          color: "positive",
+          textColor: "white",
+          icon: "warning",
+          message: "Đăng nhập thành công",
+          position: "top",
+          timeout: "1000",
+        });
         this.router.push("/user/home");
       } catch (error) {
         const alertStore = useAlertStore();
         alertStore.error(error);
+        Notify.create({
+          color: "negative",
+          textColor: "white",
+          icon: "warning",
+          message: "Sai tên đăng nhập hoặc mật khẩu",
+          position: "top",
+          timeout: "1000",
+        });
       }
     },
     logout() {

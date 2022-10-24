@@ -32,7 +32,7 @@
               <InputLogin
                 label="Tên đăng nhập"
                 placeholder="Tên đăng nhập"
-                style="margin-bottom: 35px"
+                style="margin-bottom: 40px"
                 inputType="text"
                 :modelValue="username"
                 @change="username = $event.target.value"
@@ -41,7 +41,7 @@
               <InputLogin
                 label="Mật Khẩu"
                 placeholder="Mật Khẩu"
-                style="margin-bottom: 35px"
+                style="margin-bottom: 37px"
                 inputType="password"
                 showPassword="true"
                 :modelValue="password"
@@ -70,6 +70,9 @@
 import { defineComponent } from "vue";
 import InputLogin from "components/InputLogin.vue";
 import { useAuthStore } from "src/stores/user.store";
+import { useQuasar } from "quasar";
+
+const $q = useQuasar();
 
 export default defineComponent({
   name: "LoginPage",
@@ -86,6 +89,13 @@ export default defineComponent({
     async onSubmit() {
       const authStore = useAuthStore();
       await authStore.login(this.username, this.password);
+
+      // this.$q.notify({
+      //   color: "red-5",
+      //   textColor: "white",
+      //   icon: "warning",
+      //   message: "You need to accept the license and terms first",
+      // });
     },
   },
 });
