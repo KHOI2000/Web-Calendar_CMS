@@ -1,13 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-drawer
-      class="bg-secondary"
-      style="min-width: 240px"
-      show-if-above
-      mini-width="50px"
-      bordered
-      width="240"
-    >
+    <q-drawer class="bg-secondary" show-if-above bordered width="240">
       <q-list>
         <q-item-label header class="flex items-center">
           <q-btn round style="border: 2px solid black">
@@ -57,6 +50,7 @@ export default defineComponent({
       },
     };
   },
+
   methods: {
     handler(index) {
       for (var i of this.essentialLinks) {

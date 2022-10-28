@@ -7,6 +7,7 @@
       class="text-white"
       active-class="bg-primary"
       :class="{ 'bg-primary': active }"
+      @click="handle"
     >
       <q-item-section v-if="icon" avatar>
         <q-icon :name="icon" />
@@ -16,9 +17,9 @@
         <q-item-label style="font-size: 18px">{{ title }}</q-item-label>
       </q-item-section>
 
-      <span v-if="active" class="arrow"></span>
+      <span v-show="active" class="arrow"></span>
     </q-item>
-    <div v-if="active">
+    <div v-show="active">
       <q-list>
         <div v-for="item in subList" :key="item.name">
           <q-item
@@ -36,7 +37,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, handleError, ref } from "vue";
+var pagePath = "/";
 
 export default defineComponent({
   name: "EssentialLink",
@@ -62,6 +64,14 @@ export default defineComponent({
     subList: {
       type: Array,
       default: null,
+    },
+  },
+
+  methods: {
+    handle() {
+      // console.log(pagePath.indexOf(this.direct));
+      console.log(window.location.pathname);
+      // console.log(this.direct);
     },
   },
 });

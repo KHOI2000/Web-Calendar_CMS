@@ -8,7 +8,10 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "fake-api": "json-server --watch fakedb.json ",
+    "dev": "quasar dev",
+    "assemble": "npm run dev & npm run fake-api"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

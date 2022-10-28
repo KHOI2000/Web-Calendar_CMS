@@ -3,25 +3,63 @@
     <q-toolbar class="flex row reverse">
       <q-icon class="text-black" name="account_circle" size="30px" />
       <span class="text-black q-mx-md">Admin</span>
-      <AddButton label="Thêm danh mục"></AddButton>
+      <AddButton label="Thêm danh mục" @click="add = !add"></AddButton>
       <SearchBox
         style="margin-right: 10%"
         placeholder="Tìm kiếm sự kiện"
       ></SearchBox>
     </q-toolbar>
   </q-header>
-  <h3>This is Event List Page</h3>
+  <div class="q-ma-xl">
+    <div class="breadscrum">
+      <q-breadcrumbs>
+        <q-breadcrumbs-el label="Sự kiện" />
+        <q-breadcrumbs-el label="Danh mục sự kiện" />
+      </q-breadcrumbs>
+    </div>
+    <div class="separator"></div>
+  </div>
+  <EventItemAddBox v-show="add"></EventItemAddBox>
+  <EventItem v-for="item in eventList" :key="item" :="item" />
 </template>
 <script>
-import { defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
+import EventItem from "components/EventItem.vue";
+import EventItemAddBox from "components/EventItemAddBox.vue";
+import { useEventStore } from "stores/event.store";
 
 export default defineComponent({
   name: "EventListPage",
+  setup() {
+    const store = useEventStore();
+    store.update();
+    const eventList = computed(() => store.Event);
+    console.log(store.Event);
+    return {
+      add: ref(false),
+      eventList,
+    };
+  },
   components: {
     AddButton,
     SearchBox,
+    EventItem,
+    EventItemAddBox,
   },
 });
 </script>
+<style scoped>
+.breadscrum {
+  position: absolute;
+  font-size: 20px;
+  top: 95px;
+  left: 267px;
+  background-color: white;
+  padding: 0 30px 0 30px;
+}
+.separator {
+  border-bottom: 3px solid #e9eaec;
+}
+</style>
