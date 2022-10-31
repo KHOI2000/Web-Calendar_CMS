@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
   <q-card
+    flat
     class="container flex row items-center justify-between"
     v-show="!edit"
   >
@@ -103,7 +104,7 @@ export default defineComponent({
 <style scoped>
 .container {
   border: 2px solid #e9eaec;
-  margin: 8px 5% 8px 5%;
+  margin: 8px 5% 8px 57px;
   padding: 15px;
 }
 .action-icon {

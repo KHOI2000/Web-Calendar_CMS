@@ -23,11 +23,15 @@ export const usePagesStore = defineStore("page", {
         subList: [
           {
             name: "Danh mục sự kiện",
-            path: "/user/event/event-list",
+            path: "/user/event/event-category",
           },
           {
             name: "Danh sách cảnh báo",
             path: "/user/event/warning-list",
+          },
+          {
+            name: "Danh sách sự kiện",
+            path: "/user/event/event-list",
           },
         ],
       },

@@ -1,5 +1,5 @@
 <template>
-  <q-card class="container flex row justify-between">
+  <q-card flat class="container flex row justify-between">
     <div class="title flex">
       <q-img src="../assets/EventLogo/add.png" width="100px" height="100px" />
 
@@ -76,7 +76,7 @@ export default defineComponent({
 <style scoped>
 .container {
   border: 2px solid #e9eaec;
-  margin: 0 5% 0 5%;
+  margin: 0 5% 0 57px;
   padding: 15px;
 }
 .fileInput {

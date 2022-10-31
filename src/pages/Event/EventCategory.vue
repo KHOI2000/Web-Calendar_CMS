@@ -3,7 +3,7 @@
     <q-toolbar class="flex row reverse">
       <q-icon class="text-black" name="account_circle" size="30px" />
       <span class="text-black q-mx-md">Admin</span>
-      <AddButton label="Thêm cảnh báo"></AddButton>
+      <AddButton label="Thêm danh mục" @click="add = !add"></AddButton>
       <SearchBox
         style="margin-right: 15%; margin-left: 45px"
         placeholder="Tìm kiếm sự kiện"
@@ -17,42 +17,36 @@
         <q-breadcrumbs-el label="Danh mục sự kiện" />
       </q-breadcrumbs>
     </div>
-
     <div class="separator"></div>
   </div>
-  <q-toggle
-    label="Cả ngày"
-    style="margin-left: 60px; font-size: 22px"
-    size="50px"
-    left-label
-    v-model="isAllDay"
-  />
-  <div v-for="item in List" :key="item">
-    <WarningItem :="item" v-if="item.allDay == this.isAllDay"></WarningItem>
-  </div>
+  <EventItemAddBox v-show="add"></EventItemAddBox>
+  <EventItem v-for="item in eventList" :key="item" :="item" />
 </template>
 <script>
 import { computed, defineComponent, ref } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
-import WarningItem from "src/components/WarningItem.vue";
-import { useWarningStore } from "src/stores/warning.store";
+import EventItem from "components/EventItem.vue";
+import EventItemAddBox from "components/EventItemAddBox.vue";
+import { useEventStore } from "stores/event.store";
 
 export default defineComponent({
-  name: "WarningListPage",
+  name: "EventListPage",
   setup() {
-    const store = useWarningStore();
+    const store = useEventStore();
     store.update();
-    const List = computed(() => store.warningList);
+    const eventList = computed(() => store.Event);
+    console.log(store.Event);
     return {
-      isAllDay: ref(false),
-      List,
+      add: ref(false),
+      eventList,
     };
   },
   components: {
     AddButton,
-    WarningItem,
     SearchBox,
+    EventItem,
+    EventItemAddBox,
   },
 });
 </script>
@@ -60,7 +54,7 @@ export default defineComponent({
 .breadscrum {
   position: absolute;
   font-size: 17px;
-  top: 100px;
+  top: 95px;
   left: 267px;
   background-color: white;
   padding: 0 30px 0 30px;

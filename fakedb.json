@@ -6,13 +6,85 @@
     },
     {
       "title": "Đi làm",
-      "imageURL": "blob:https://cdpn.io/1018fbbb-8606-48ee-955e-eae19d2a3b18",
+      "imageURL": "",
       "id": 4
     },
     {
       "title": "Đi chơi",
       "imageURL": "",
       "id": 5
+    }
+  ],
+  "warningList": [
+    {
+      "title": "Vào lúc diễn ra sự kiện",
+
+      "allDay": false,
+      "id": 1
+    },
+    {
+      "title": "Trước 5 phút",
+
+      "allDay": false,
+      "id": 2
+    },
+    {
+      "title": "Trước 10 phút",
+
+      "allDay": false,
+      "id": 3
+    },
+    {
+      "title": "Trước 2 tiếng",
+
+      "id": 4
+    },
+    {
+      "title": "Trước 1 ngày",
+
+      "id": 5
+    },
+    {
+      "title": "Trước 1 ngày",
+
+      "allDay": true,
+      "id": 6
+    },
+    {
+      "title": "Trước 2 ngày",
+
+      "allDay": true,
+      "id": 7
+    },
+    {
+      "title": "Trước 1 tuần",
+
+      "allDay": true,
+      "id": 8
+    },
+    {
+      "title": "Vào Ngày diễn ra sự kiện",
+
+      "allDay": true,
+      "id": 9
+    },
+    {
+      "title": "trước 1 tiếng",
+
+      "allDay": true,
+      "id": 10
+    },
+    {
+      "title": "Sau 20 phút",
+
+      "allDay": true,
+      "id": 14
+    },
+    {
+      "title": "Trước 1 ngày",
+
+      "allDay": false,
+      "id": 15
     }
   ]
 }

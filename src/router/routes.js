@@ -18,8 +18,16 @@ const routes = [
       },
       { path: "membership", component: () => import("pages/Membership.vue") },
       {
+        path: "event/event-category",
+        component: () => import("pages/Event/EventCategory.vue"),
+      },
+      {
         path: "event/event-list",
         component: () => import("pages/Event/EventList.vue"),
+      },
+      {
+        path: "event/event-list/add",
+        component: () => import("pages/Event/EventListAdd.vue"),
       },
       {
         path: "event/warning-list",
