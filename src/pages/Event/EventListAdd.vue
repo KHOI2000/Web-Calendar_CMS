@@ -13,7 +13,7 @@
         <q-breadcrumbs-el label="Thêm" />
       </q-breadcrumbs>
     </div>
-    <div class="calendarType">
+    <div class="Save-btn">
       <q-btn label="Lưu" no-caps size="17px" color="negative"></q-btn>
     </div>
     <div class="separator"></div>
@@ -136,6 +136,8 @@
 </template>
 <script>
 import { defineComponent, ref } from "vue";
+import { usePagesStore } from "src/stores/pages";
+const PageStore = usePagesStore();
 
 export default defineComponent({
   setup() {
@@ -146,6 +148,14 @@ export default defineComponent({
       options: ref(strOptions),
       qeditor: ref(""),
     };
+  },
+  created() {
+    const Path = window.location.hash;
+    for (var i of PageStore.pagesList) {
+      if (Path.indexOf(i.direct) != -1) {
+        i.active = true;
+      } else i.active = false;
+    }
   },
 });
 </script>
@@ -161,7 +171,7 @@ export default defineComponent({
 .PageBody {
   margin: 57px;
 }
-.calendarType {
+.Save-btn {
   position: absolute;
   top: 92px;
   right: 30px;

@@ -6,10 +6,17 @@ const routes = [
       { path: "home", component: () => import("pages/IndexPage.vue") },
       { path: "article", component: () => import("pages/Article.vue") },
       { path: "day_event", component: () => import("pages/DayEvent.vue") },
-      { path: "event", component: () => import("pages/Event/Event.vue") },
+      {
+        path: "event",
+        component: () => import("pages/Event/EventCategory.vue"),
+      },
       {
         path: "month_calendar",
-        component: () => import("pages/MonthCalendar.vue"),
+        component: () => import("pages/MonthCalendar/MonthCalendar.vue"),
+      },
+      {
+        path: "month_calendar/add_month_calendar",
+        component: () => import("pages/MonthCalendar/MonthCalendarAdd.vue"),
       },
       { path: "setting", component: () => import("pages/Setting.vue") },
       {

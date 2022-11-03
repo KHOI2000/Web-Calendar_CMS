@@ -29,7 +29,8 @@ import SearchBox from "components/SearchBox.vue";
 import EventItem from "components/EventItem.vue";
 import EventItemAddBox from "components/EventItemAddBox.vue";
 import { useEventStore } from "stores/event.store";
-
+import { usePagesStore } from "src/stores/pages";
+const PageStore = usePagesStore();
 export default defineComponent({
   name: "EventListPage",
   setup() {
@@ -41,6 +42,14 @@ export default defineComponent({
       add: ref(false),
       eventList,
     };
+  },
+  created() {
+    const Path = window.location.hash;
+    for (var i of PageStore.pagesList) {
+      if (Path.indexOf(i.direct) != -1) {
+        i.active = true;
+      } else i.active = false;
+    }
   },
   components: {
     AddButton,
@@ -54,7 +63,7 @@ export default defineComponent({
 .breadscrum {
   position: absolute;
   font-size: 17px;
-  top: 95px;
+  top: 100px;
   left: 267px;
   background-color: white;
   padding: 0 30px 0 30px;

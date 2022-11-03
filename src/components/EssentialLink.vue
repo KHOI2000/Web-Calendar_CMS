@@ -3,7 +3,7 @@
     <q-item
       clickable
       tag="a"
-      :to="direct"
+      :to="subList == null ? direct : subList[0].path"
       class="text-white"
       active-class="bg-primary"
       :class="{ 'bg-primary': active }"

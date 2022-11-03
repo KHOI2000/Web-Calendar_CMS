@@ -24,48 +24,34 @@ import { defineComponent } from "vue";
 
 const data = [
   {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
+    name: "Ngày rằm",
+    Start_Date: "10/10/2022",
+    Day_In_Week: "-",
+    Time_Period: "Cả ngày",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
+    name: "Ngày mùng 1",
+    Start_Date: "25/10/2022",
+    Day_In_Week: "-",
+    Time_Period: "Cả ngày",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
-  },
-  {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
-  },
-  {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
-  },
-  {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
-  },
-  {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
-  },
-  {
-    name: "Ngày giải phóng Thủ đô",
-    Crated_Date: "10/10/2022",
+    name: "Ngày rằm",
+    Start_Date: "08/11/2022",
+    Day_In_Week: "-",
+    Time_Period: "Cả ngày",
   },
 ];
 
 const columns = [
   {
-    name: "index",
-    label: "STT",
-    field: "index",
-    sortable: false,
+    name: "Start Date",
+    label: "Ngày",
+    field: "Start_Date",
+    sortable: true,
     align: "left",
     headerStyle: "font-size: 17px",
-    style: "font-size: 17px; width: 120px",
+    style: "font-size: 17px",
   },
   {
     name: "Name",
@@ -75,15 +61,23 @@ const columns = [
     sortable: true,
     align: "left",
     headerStyle: "font-size: 17px",
-    style: "width: 30%px; font-size:17px;",
+    style: "font-size: 17px",
   },
   {
-    name: "Crated Date",
-    label: "Ngày",
-    field: "Crated_Date",
+    name: "Day In Week",
+    label: "Thứ",
+    field: "Day_In_Week",
     sortable: true,
     align: "left",
-
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "Time Period",
+    label: "Thời gian",
+    field: "Time_Period",
+    sortable: true,
+    align: "left",
     headerStyle: "font-size: 17px",
     style: "font-size: 17px",
   },
@@ -93,7 +87,6 @@ const columns = [
     field: "Action",
     sortable: false,
     align: "center",
-
     headerStyle: "font-size: 17px",
     style: "font-size: 17px",
   },
@@ -107,7 +100,7 @@ rows.forEach((row, index) => {
 });
 
 export default defineComponent({
-  name: "TableActions",
+  name: "MonthCalendarTable",
   setup() {
     return {
       rows,

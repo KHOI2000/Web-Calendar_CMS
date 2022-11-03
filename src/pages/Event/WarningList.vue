@@ -14,7 +14,7 @@
     <div class="breadscrum">
       <q-breadcrumbs>
         <q-breadcrumbs-el label="Sự kiện" />
-        <q-breadcrumbs-el label="Danh mục sự kiện" />
+        <q-breadcrumbs-el label="Danh sách  cảnh báo " />
       </q-breadcrumbs>
     </div>
 
@@ -37,6 +37,8 @@ import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
 import WarningItem from "src/components/WarningItem.vue";
 import { useWarningStore } from "src/stores/warning.store";
+import { usePagesStore } from "src/stores/pages";
+const PageStore = usePagesStore();
 
 export default defineComponent({
   name: "WarningListPage",
@@ -53,6 +55,14 @@ export default defineComponent({
     AddButton,
     WarningItem,
     SearchBox,
+  },
+  created() {
+    const Path = window.location.hash;
+    for (var i of PageStore.pagesList) {
+      if (Path.indexOf(i.direct) != -1) {
+        i.active = true;
+      } else i.active = false;
+    }
   },
 });
 </script>

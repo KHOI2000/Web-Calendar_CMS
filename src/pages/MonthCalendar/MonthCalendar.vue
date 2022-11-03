@@ -5,7 +5,7 @@
       <span class="text-black q-mx-md">Admin</span>
       <AddButton
         label="Thêm sự kiện"
-        to="/user/event/event-list/add"
+        to="month_calendar/add_month_calendar"
       ></AddButton>
       <SearchBox
         style="margin-right: 15%; margin-left: 45px"
@@ -20,39 +20,26 @@
         <q-breadcrumbs-el label="Danh sách sự kiện" />
       </q-breadcrumbs>
     </div>
-    <div>
-      <div class="calendarType">
-        <q-btn-toggle
-          v-model="model"
-          no-caps
-          size="17px"
-          toggle-color="primary"
-          :options="[
-            { label: 'Sự kiện DL', value: 'DL' },
-            { label: 'Sự kiện ÂL', value: 'AL' },
-          ]"
-        ></q-btn-toggle>
-      </div>
-    </div>
     <div class="separator"></div>
   </div>
-  <EventListTableJuliusVue v-show="this.model == 'DL'" />
-  <EventListTableLunarVue v-show="this.model == 'AL'" />
+  <MonthCalendarTable />
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onBeforeMount } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
-import EventListTableJuliusVue from "src/components/EventList/EventListTable.julius.vue";
-import EventListTableLunarVue from "src/components/EventList/EventListTable.lunar.vue";
 import { usePagesStore } from "src/stores/pages";
+import MonthCalendarTable from "components/MonthCalendarTable.vue";
 const PageStore = usePagesStore();
-
 export default defineComponent({
-  setup() {
-    return {
-      model: ref("DL"),
-    };
+  name: "MonthCalendar",
+  components: {
+    AddButton,
+    SearchBox,
+    MonthCalendarTable,
+  },
+  beforeCreate() {
+    console.log("Before Create");
   },
   created() {
     const Path = window.location.hash;
@@ -62,11 +49,11 @@ export default defineComponent({
       } else i.active = false;
     }
   },
-  components: {
-    AddButton,
-    SearchBox,
-    EventListTableJuliusVue,
-    EventListTableLunarVue,
+  beforeMount() {
+    console.log("Before Mount");
+  },
+  mounted() {
+    console.log("Mounted");
   },
 });
 </script>
@@ -75,14 +62,7 @@ export default defineComponent({
   position: absolute;
   font-size: 17px;
   top: 100px;
-  left: 267px;
-  background-color: white;
-  padding: 0 30px 0 30px;
-}
-.calendarType {
-  position: absolute;
-  top: 92px;
-  right: 30px;
+  left: 268px;
   background-color: white;
   padding: 0 30px 0 30px;
 }

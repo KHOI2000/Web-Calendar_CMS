@@ -14,12 +14,22 @@
 import { defineComponent } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
+import { usePagesStore } from "src/stores/pages";
+const PageStore = usePagesStore();
 
 export default defineComponent({
   name: "ArticlesPage",
   components: {
     AddButton,
     SearchBox,
+  },
+  created() {
+    const Path = window.location.hash;
+    for (var i of PageStore.pagesList) {
+      if (Path.indexOf(i.direct) != -1) {
+        i.active = true;
+      } else i.active = false;
+    }
   },
 });
 </script>
