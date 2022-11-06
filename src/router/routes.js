@@ -4,11 +4,19 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "home", component: () => import("pages/IndexPage.vue") },
-      { path: "article", component: () => import("pages/Article.vue") },
+      { path: "article", component: () => import("pages/Article/Article.vue") },
       { path: "day_event", component: () => import("pages/DayEvent.vue") },
       {
         path: "event",
         component: () => import("pages/Event/EventCategory.vue"),
+      },
+      {
+        path: "article/manage",
+        component: () => import("src/pages/Article/ManageArticle.vue"),
+      },
+      {
+        path: "article/AddArticle",
+        component: () => import("src/pages/Article/AddArticle.vue"),
       },
       {
         path: "month_calendar",
