@@ -41,12 +41,7 @@ export const usePagesStore = defineStore("page", {
         direct: "/user/day_event",
         active: false,
       },
-      {
-        title: "Lịch tháng",
-        icon: "calendar_month",
-        direct: "/user/month_calendar",
-        active: false,
-      },
+
       {
         title: "Sự kiện tết",
         icon: "public",
@@ -58,8 +53,8 @@ export const usePagesStore = defineStore("page", {
             path: "/user/tet_holiday_event/xong-dat",
           },
           {
-            name: "Hướng nhà",
-            path: "/user/tet_holiday_event/huong-nha",
+            name: "Phong thuỷ",
+            path: "/user/tet_holiday_event/phong_thuy",
           },
           {
             name: "Xuất hành",
@@ -70,6 +65,12 @@ export const usePagesStore = defineStore("page", {
             path: "/user/tet_holiday_event/tu-vi-van-han",
           },
         ],
+      },
+      {
+        title: "Hướng nhà",
+        icon: "house",
+        direct: "/user/house_direction",
+        active: false,
       },
       {
         title: "Thành viên",

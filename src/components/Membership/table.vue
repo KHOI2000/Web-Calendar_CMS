@@ -1,70 +1,65 @@
 <template>
-  <q-header elevated class="bg-white flex items-center" style="height: 64px">
-    <q-toolbar class="flex row reverse">
-      <q-icon class="text-black" name="account_circle" size="30px" />
-      <span class="text-black q-mx-md">Admin</span>
-      <AddButton label="Thêm thành viên" @click="add = !add"></AddButton>
-      <SearchBox
-        style="margin-right: 15%; margin-left: 45px"
-        placeholder="Tìm kiếm thành viên..."
-      ></SearchBox>
-    </q-toolbar>
-  </q-header>
-  <div class="q-ma-xl">
-    <div class="breadscrum">
-      <q-breadcrumbs>
-        <q-breadcrumbs-el label="Thành viên" />
-      </q-breadcrumbs>
-    </div>
+  <q-card style="margin: 0 57px 0 57px">
+    <q-card-section class="q-pa-none">
+      <q-table
+        :rows="rows"
+        :columns="columns"
+        table-header-class="bg-primary text-white "
+        row-key="index"
+        :rows-per-page-options="[8]"
+      >
+        <template v-slot:body-cell-Action="props">
+          <q-td :props="props">
+            <q-btn icon="edit" size="sm" flat dense @click="_edit(props)" />
+            <q-btn
+              icon="delete"
+              size="sm"
+              class="q-ml-sm"
+              flat
+              dense
+              @click="_delete(props)"
+            />
+            <q-btn
+              icon="lock"
+              size="sm"
+              class="q-ml-sm"
+              flat
+              dense
+              @click="_changePassword(props)"
+            />
+          </q-td>
+        </template>
+      </q-table>
+    </q-card-section>
+  </q-card>
 
-    <div class="separator"></div>
-  </div>
-  <MembershipTable />
-  <q-dialog v-model="add">
+  <!-- Popup Edit Dialog -->
+  <q-dialog v-model="edit">
     <q-card class="text-white card">
       <q-card-section class="q-pa-sm card-header">
         Thông tin thành viên
       </q-card-section>
       <q-card-section class="popupBody">
         <div class="row flex items-center">
-          <div class="col-4">
-            Tên đăng nhập
-            <span class="text-red">*</span>
-          </div>
-
+          <div class="col-4">Họ tên</div>
           <div class="col-8">
-            <q-input
-              placeholder="Nhập..."
-              outlined
-              style="width: 100%"
-              v-model="newLoginName"
-            />
+            <q-input outlined style="width: 100%" v-model="editName" />
           </div>
         </div>
         <div class="row flex items-center q-my-sm">
-          <div class="col-4">Họ tên</div>
+          <div class="col-4">Tên đăng nhập</div>
           <div class="col-8">
-            <q-input
-              placeholder="Nhập..."
-              outlined
-              style="width: 100%"
-              v-model="newName"
-            />
+            <q-input outlined style="width: 100%" v-model="editLoginName" />
           </div>
         </div>
-
         <div class="row flex items-center">
-          <div class="col-4">
-            Chức danh
-            <span class="text-red">*</span>
-          </div>
-
+          <div class="col-4">Chức danh</div>
           <div class="col-8">
             <q-select
               :options="position"
               outlined
               style="width: 100%"
-              v-model="newPosition"
+              v-model="editPosition"
             />
           </div>
         </div>
@@ -123,6 +118,45 @@
             </div>
           </div>
         </div>
+      </q-card-section>
+      <q-card-actions align="right">
+        <q-btn flat class="bg-accent" label="Huỷ" v-close-popup />
+        <q-btn flat class="bg-negative" label="Lưu" v-close-popup />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+
+  <!-- Popup Change Pasword dialog -->
+  <q-dialog v-model="channgPw">
+    <q-card class="text-white card">
+      <q-card-section class="q-pa-sm card-header">
+        Thông tin thành viên
+      </q-card-section>
+      <q-card-section class="popupBody">
+        <div class="row flex items-center">
+          <div class="col-4">Họ tên</div>
+          <div class="col-8">
+            <q-input outlined style="width: 100%" v-model="editName" />
+          </div>
+        </div>
+        <div class="row flex items-center q-my-sm">
+          <div class="col-4">Tên đăng nhập</div>
+          <div class="col-8">
+            <q-input outlined style="width: 100%" v-model="editLoginName" />
+          </div>
+        </div>
+        <div class="row flex items-center">
+          <div class="col-4">Chức danh</div>
+          <div class="col-8">
+            <q-select
+              :options="position"
+              outlined
+              style="width: 100%"
+              v-model="editPosition"
+            />
+          </div>
+        </div>
+        <div class="text-h5 text-primary q-my-md">Thay đổi mật khẩu</div>
         <div class="row flex items-center q-my-sm">
           <div class="col-4">
             Mật khẩu
@@ -134,7 +168,7 @@
               type="password"
               outlined
               style="width: 100%"
-              v-model="newPassword"
+              v-model="editPassword"
             />
           </div>
         </div>
@@ -161,14 +195,9 @@
     </q-card>
   </q-dialog>
 </template>
+
 <script>
 import { defineComponent, ref } from "vue";
-import AddButton from "components/AddButton.vue";
-import SearchBox from "components/SearchBox.vue";
-import { usePagesStore } from "src/stores/pages";
-import MembershipTable from "components/Membership/table.vue";
-
-const PageStore = usePagesStore();
 
 const data = [
   {
@@ -242,13 +271,17 @@ for (let i = 0; i < data.length; i++) {
 rows.forEach((row, index) => {
   row.index = index + 1;
 });
+
 export default defineComponent({
-  name: "MembershipPage",
+  name: "MembershipTable",
   setup() {
     const position = ["Admin", "Member"];
     return {
       position,
-      add: ref(false),
+      rows,
+      columns,
+      edit: ref(false),
+      channgPw: ref(false),
       permission: ref({
         article_read: ref(false),
         tet_read: ref(false),
@@ -259,41 +292,34 @@ export default defineComponent({
         event_modify: ref(false),
         calendar_modify: ref(false),
       }),
-      newName: ref(""),
-      newLoginName: ref(""),
-      newPosition: ref("Member"),
-      newPassword: ref(""),
+      editName: ref(""),
+      editLoginName: ref(""),
+      editPosition: ref(""),
+      editPassword: ref(""),
       confirmPassword: ref(""),
     };
   },
-  components: {
-    AddButton,
-    SearchBox,
-    MembershipTable,
-  },
-
-  created() {
-    const Path = window.location.hash;
-    for (var i of PageStore.pagesList) {
-      if (Path.indexOf(i.direct) != -1) {
-        i.active = true;
-      } else i.active = false;
-    }
+  methods: {
+    _delete(props) {
+      //console.log(props.row.Name);
+    },
+    _edit(props) {
+      this.edit = true;
+      this.editName = props.row.Name;
+      this.editLoginName = props.row.Login_Name;
+      this.editPosition = props.row.Position;
+    },
+    _changePassword(props) {
+      this.channgPw = true;
+      this.editName = props.row.Name;
+      this.editLoginName = props.row.Login_Name;
+      this.editPosition = props.row.Position;
+    },
   },
 });
 </script>
+
 <style scoped>
-.breadscrum {
-  position: absolute;
-  font-size: 17px;
-  top: 100px;
-  left: 267px;
-  background-color: white;
-  padding: 0 30px 0 30px;
-}
-.separator {
-  border-bottom: 3px solid #e9eaec;
-}
 .card-header {
   background-color: rgba(164, 176, 207, 0.19);
   color: #a7adb2;
@@ -304,6 +330,6 @@ export default defineComponent({
 }
 .card {
   width: 680px;
-  height: 739px;
+  height: 589px;
 }
 </style>

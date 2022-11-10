@@ -19,12 +19,12 @@ const routes = [
         component: () => import("src/pages/Article/AddArticle.vue"),
       },
       {
-        path: "month_calendar",
-        component: () => import("pages/MonthCalendar/MonthCalendar.vue"),
+        path: "house_direction",
+        component: () => import("pages/HouseDirection/HouseDirection.vue"),
       },
       {
-        path: "month_calendar/add_month_calendar",
-        component: () => import("pages/MonthCalendar/MonthCalendarAdd.vue"),
+        path: "house_direction/edit",
+        component: () => import("components/HouseDirection/Edit.vue"),
       },
       { path: "setting", component: () => import("pages/Setting.vue") },
       {
@@ -49,8 +49,8 @@ const routes = [
         component: () => import("pages/Event/WarningList.vue"),
       },
       {
-        path: "tet_holiday_event/huong-nha",
-        component: () => import("pages/TetHoliday/HuongNha.vue"),
+        path: "tet_holiday_event/phong_thuy",
+        component: () => import("pages/TetHoliday/PhongThuy.vue"),
       },
       {
         path: "tet_holiday_event/xong-dat",

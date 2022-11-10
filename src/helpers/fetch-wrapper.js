@@ -12,7 +12,7 @@ function request(method) {
   return (url, body) => {
     const requestOptions = {
       method,
-      headers: authHeader(url),
+      headers: authHeader(),
     };
     if (body) {
       requestOptions.headers["Content-Type"] = "application/json";
@@ -24,12 +24,13 @@ function request(method) {
 
 // helper functions
 
-function authHeader(url) {
+function authHeader() {
   // return auth header with jwt if user is logged in and request is to the api url
   const { user } = useAuthStore();
-  const isLoggedIn = !!user?.token;
+  console.log(user);
+  const isLoggedIn = !!user?.accessToken;
   if (isLoggedIn) {
-    return { Authorization: `Bearer ${user.token}` };
+    return { Authorization: `Bearer ${user.accessToken}` };
   } else {
     return {};
   }

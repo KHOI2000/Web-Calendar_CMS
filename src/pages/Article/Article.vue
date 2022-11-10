@@ -3,7 +3,7 @@
     <q-toolbar class="flex row reverse">
       <q-icon class="text-black" name="account_circle" size="30px" />
       <span class="text-black q-mx-md">Admin</span>
-      <AddButton to="article/AddArticle"></AddButton>
+      <AddButton label="Thêm bài viết" to="article/AddArticle"></AddButton>
       <SearchBox style="margin-right: 10%"></SearchBox>
     </q-toolbar>
   </q-header>
@@ -11,7 +11,12 @@
     <div style="width: 100%">
       <q-list class="row flex flex-center q-ml-xs justify-between">
         <q-item class="q-pa-md">
-          <q-btn-dropdown flat color="grey-8" no-caps @click="activateArticle">
+          <q-btn-dropdown
+            flat
+            color="grey-8"
+            no-caps
+            @click="this.isActivate = !this.isActivate"
+          >
             <template v-slot:label>
               <div class="row items-center no-wrap">
                 <div class="text-center">
@@ -51,8 +56,10 @@ import { computed, ref } from "vue";
 import { defineComponent } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
-import { useArticleStore } from "src/stores/article.store";
+import { useArticleStore } from "stores/article.store";
 import ArticleInfo from "components/ArticleInfo.vue";
+import { usePagesStore } from "src/stores/pages";
+const PageStore = usePagesStore();
 
 const store = useArticleStore();
 store.update();
@@ -68,24 +75,23 @@ export default defineComponent({
 
   setup() {
     const List = computed(() => store.articleList);
+    console.log(List);
     return {
       List,
       val: ref(false),
-      isActivate: ref(false),
+      isActivate: ref(true),
     };
   },
-
   created() {
-    console.log(this.perPage);
-  },
-  beforeMount() {
-    console.log(this);
+    const Path = window.location.hash;
+    for (var i of PageStore.pagesList) {
+      if (Path.indexOf(i.direct) != -1) {
+        i.active = true;
+      } else i.active = false;
+    }
   },
 
   methods: {
-    activateArticle() {
-      this.isActivate = !this.isActivate;
-    },
     onPageClick(event) {
       this.currentPage = event;
     },

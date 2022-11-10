@@ -23,7 +23,7 @@ export const useArticleStore = defineStore("article", {
       console.log("code go here");
       try {
         const res = await fetchWrapper.get(`${baseUrl}`);
-        console.log(res);
+        console.log(res.data);
         this.articleList = res.data;
       } catch (error) {
         console.log(error);
