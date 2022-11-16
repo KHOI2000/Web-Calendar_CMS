@@ -53,8 +53,16 @@ const routes = [
         component: () => import("pages/TetHoliday/PhongThuy.vue"),
       },
       {
+        path: "tet_holiday_event/phong_thuy/edit",
+        component: () => import("pages/TetHoliday/PhongThuyEdit.vue"),
+      },
+      {
         path: "tet_holiday_event/xong-dat",
         component: () => import("pages/TetHoliday/XongDat.vue"),
+      },
+      {
+        path: "tet_holiday_event/xong-dat/edit",
+        component: () => import("pages/TetHoliday/XongDatEdit.vue"),
       },
       {
         path: "tet_holiday_event/xuat-hanh",

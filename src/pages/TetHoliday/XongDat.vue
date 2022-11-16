@@ -3,17 +3,73 @@
     <q-toolbar class="flex row reverse">
       <q-icon class="text-black" name="account_circle" size="30px" />
       <span class="text-black q-mx-md">Admin</span>
+      <AddButton label="Thêm cảnh báo"></AddButton>
+      <SearchBox
+        style="margin-right: 20%; margin-left: 5px"
+        placeholder="Tìm kiếm sự kiện"
+      ></SearchBox>
     </q-toolbar>
   </q-header>
-  <h3>This is Xong Dat Page</h3>
+  <div class="q-ma-xl">
+    <div class="breadscrum">
+      <q-breadcrumbs>
+        <q-breadcrumbs-el label="Sự kiện tết" />
+        <q-breadcrumbs-el label="Xông đất " />
+      </q-breadcrumbs>
+    </div>
+
+    <div class="separator"></div>
+  </div>
+  <div style="margin-left: 12px">
+    <q-list>
+      <q-item class="row flex flex-center q-col-gutter-x-sm">
+        <q-item-section class="col-5 q-ml-md q-pl-lg">
+          <p>Chủ nhà</p>
+          <q-select outlined v-model="model" :options="options" />
+        </q-item-section>
+
+        <q-item-section class="col-4">
+          <p>Khách</p>
+          <q-select outlined v-model="model1" :options="options1" />
+        </q-item-section>
+        <q-item-section class="col">
+          <q-btn
+            no-caps
+            class="bg-primary text-white q-py-md q-mx-xl"
+            style="margin-top: 34px"
+            label="Lọc kết quả"
+          >
+          </q-btn>
+        </q-item-section>
+      </q-item>
+    </q-list>
+    <HouseDirectionList class="q-mt-md" />
+  </div>
+  <qPagination class="q-mt-xl" />
 </template>
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import SearchBox from "components/SearchBox.vue";
 import { usePagesStore } from "src/stores/pages";
-const PageStore = usePagesStore();
+import HouseDirectionList from "src/components/HouseDirection/List.vue";
+import qPagination from "src/components/qPagination.vue";
 
+const PageStore = usePagesStore();
 export default defineComponent({
-  name: "XongDatPage",
+  components: {
+    SearchBox,
+    HouseDirectionList,
+    qPagination,
+  },
+  setup() {
+    return {
+      model1: ref("Ất sửu"),
+      options1: ref(["Ất sửu", "Giáp tý"]),
+      model: ref("Giáp tý"),
+      options: ref(["Giáp tý", "Ất sửu"]),
+    };
+  },
+
   created() {
     const Path = window.location.hash;
     for (var i of PageStore.pagesList) {
@@ -24,3 +80,23 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.breadscrum {
+  position: absolute;
+  font-size: 17px;
+  top: 100px;
+  left: 268px;
+  background-color: white;
+  padding: 0 30px 0 30px;
+}
+.vector {
+  height: 1px;
+  width: 88%;
+  background-color: rgb(223, 215, 215);
+  margin-right: 20px;
+}
+
+.separator {
+  border-bottom: 3px solid #e9eaec;
+}
+</style>

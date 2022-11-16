@@ -3,34 +3,27 @@
     <q-toolbar class="flex row reverse">
       <q-icon class="text-black" name="account_circle" size="30px" />
       <span class="text-black q-mx-md">Admin</span>
+      <AddButton label="Thêm cảnh báo"></AddButton>
       <SearchBox
-        style="margin-right: 15%; margin-left: 45px"
+        style="margin-right: 20%; margin-left: 5px"
         placeholder="Tìm kiếm sự kiện"
       ></SearchBox>
     </q-toolbar>
   </q-header>
-  <q-container>
-    <q-label class="row flex flex-center q-mt-md justify-between">
-      <q-item
-        class="q-ml-sm"
-        style="
-          font-weight: 400;
-          font-size: 18px;
-          font-family: 'Roboto';
-          color: #6d767e;
-        "
-      >
-        Hướng nhà
-      </q-item>
-      <div class="vector"></div>
-    </q-label>
+  <div class="q-ma-xl">
+    <div class="breadscrum">
+      <q-breadcrumbs>
+        <q-breadcrumbs-el label="Sự kiện" />
+        <q-breadcrumbs-el label="Danh sách  cảnh báo " />
+      </q-breadcrumbs>
+    </div>
 
+    <div class="separator"></div>
+  </div>
+  <div style="margin-left: 12px">
     <q-list>
       <q-item class="row flex flex-center q-col-gutter-x-sm">
-        <q-item-section
-          class="col-5 q-ml-md q-pl-md"
-          style="padding-left: 24px"
-        >
+        <q-item-section class="col-5 q-ml-md q-pl-lg">
           <p>Hướng nhà</p>
           <q-select outlined v-model="model" :options="options" />
         </q-item-section>
@@ -51,7 +44,7 @@
       </q-item>
     </q-list>
     <HouseDirectionList class="q-mt-md" />
-  </q-container>
+  </div>
   <qPagination class="q-mt-xl" />
 </template>
 <script>
