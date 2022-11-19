@@ -12,7 +12,7 @@
         />
       </q-item-section>
 
-      <q-item-section class="col">
+      <q-item-section class="col q-mb-" >
         <div>
           <q-item-label class="text-h6">{{ articleTitle }}</q-item-label>
         </div>
@@ -22,7 +22,7 @@
           </q-avatar>
           <q-item-label class=""> {{ category }} </q-item-label>
         </div>
-        <div class="row flex items-center q-mt-md">
+        <!-- <div class="row flex items-center q-mt-md">
           <q-item-label class="row flex q-mb-md">
             <q-avatar class="q-mr-xs" style="height: 18px; width: 16px">
               <img src="../assets/Calendar.png" alt="" />
@@ -36,7 +36,7 @@
             </q-avatar>
             <p>{{ articleAuthor }}</p>
           </q-item-label>
-        </div>
+        </div> -->
       </q-item-section>
     </q-item>
     <q-option class="row flex q-ma-md justify-around">

@@ -27,7 +27,7 @@
       </div>
       <div class="vector"></div>
 
-      <q-item>
+      <q-item to="/user/house_direction">
         <q-btn no-caps class="bg-negative text-white q-mr-md">Lưu</q-btn>
       </q-item>
     </q-label>
@@ -66,6 +66,9 @@
 </template>
 <script>
 import { defineComponent, ref } from "vue";
+import { usePagesStore } from "src/stores/pages";
+
+const PageStore = usePagesStore();
 
 export default defineComponent({
   name: "HuongNha",

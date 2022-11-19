@@ -8,7 +8,7 @@
         to="/user/event/event-list/add"
       ></AddButton>
       <SearchBox
-        style="margin-right: 15%; margin-left: 45px"
+        style="margin-right: 5%; margin-left: 45px"
         placeholder="Tìm kiếm sự kiện"
       ></SearchBox>
     </q-toolbar>

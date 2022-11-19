@@ -18,32 +18,36 @@
       <template v-slot:before>
         <q-item class="row flex items-center q-pa-md justify-between q-ml-sm">
           <q-title class="">Tất cả bài viết</q-title>
-          <q-btn flat class="text-white bg-red-8" @click="_Save">Lưu</q-btn>
+          <q-btn no-caps flat class="text-white bg-red-8" @click="_Save"
+            >Lưu</q-btn
+          >
         </q-item>
         <q-separator inset />
 
         <div
-          class="row flex flex-center q-ml-md q-mt-md"
-          style="border: 1px solid #aaa; width: 95%; height: 400px"
+          class="row q-ml-md q-mt-md q-py-md"
+          style="border: 1px solid #e9eaec; width: 95%; height: 350px"
         >
-          <q-item-section avatar class="q-mr-md">
-            <q-img
-              :src="imageUrl"
-              style="height: 110px; width: 180px"
-              class="q-ml-lg"
-            >
-              <q-icon
-                style="font-size: 20px"
-                name="camera_enhance"
-                v-on:click="handleClickInputFile"
-              ></q-icon>
-            </q-img>
-            <q-input
-              ref="fileInputAvatar"
-              type="file"
-              style="display: none"
-            ></q-input>
-          </q-item-section>
+          <q-list>
+            <q-item avatar class="col-4 q-mr-md">
+              <q-img
+                :src="imageUrl"
+                style="height: 110px; width: 180px; border-radius: 4px"
+                class="q-ml-lg"
+              >
+                <q-icon
+                  style="font-size: 20px"
+                  name="camera_enhance"
+                  v-on:click="handleClickInputFile"
+                ></q-icon>
+              </q-img>
+              <q-input
+                ref="fileInputAvatar"
+                type="file"
+                style="display: none"
+              ></q-input>
+            </q-item>
+          </q-list>
 
           <q-list class="col">
             <q-item class="row flex items-center q-pa-sx justify-between">
@@ -56,7 +60,7 @@
               />
             </q-item>
 
-            <q-item class="row flex items-center q-pa-sx justify-between">
+            <!-- <q-item class="row flex items-center q-pa-sx justify-between">
               <span>Tác giả:</span>
               <q-input
                 style="width: 426px"
@@ -64,7 +68,7 @@
                 v-model="inputAuthor"
                 placeholder="Tác giả.."
               />
-            </q-item>
+            </q-item> -->
 
             <q-item class="row flex items-center q-pa-sx justify-between">
               <span>Link import:</span>
@@ -123,9 +127,11 @@
           </div>
         </q-item>
         <q-separator inset class="q-mt-xs" />
-        <div v-for="article in List" :key="article">
+
+        <!-- <div v-for="article in List" :key="article">
           <qCategory class="q-ma-md" v-bind="article" />
-        </div>
+        </div> -->
+
       </template>
     </q-splitter>
   </q-container>
@@ -135,7 +141,7 @@ import { computed, ref } from "vue";
 import { defineComponent } from "vue";
 import AddButton from "components/AddButton.vue";
 import SearchBox from "components/SearchBox.vue";
-import qCategory from "src/components/qCategory.vue";
+// import qCategory from "src/components/qCategory.vue";
 
 import { useArticleStore } from "stores/article.store";
 
@@ -147,7 +153,7 @@ export default defineComponent({
   components: {
     AddButton,
     SearchBox,
-    qCategory,
+    // qCategory,
   },
   data() {
     return {
@@ -156,7 +162,7 @@ export default defineComponent({
       dialog: ref(false),
       cancelEnabled: ref(""),
       inputTitle: this.title,
-      inputAuthor: this.author,
+      // inputAuthor: this.author,
       inputLink: this.Link,
     };
   },
@@ -169,14 +175,14 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
+    // date: {
+    //   type: Date,
+    //   required: true,
+    // },
+    // author: {
+    //   type: String,
+    //   required: true,
+    // },
     detailUrl: {
       type: String,
       default: "#",

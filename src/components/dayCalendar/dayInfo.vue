@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <q-list class="col">
+    <q-list class="col" >
       <q-item class="row q-ml-md flex items-center">
         <div class="line"></div>
         <q-item-label class="q-ml-sm">Thông tin ngày</q-item-label>

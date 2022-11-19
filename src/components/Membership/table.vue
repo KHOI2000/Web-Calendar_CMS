@@ -10,10 +10,10 @@
       >
         <template v-slot:body-cell-Action="props">
           <q-td :props="props">
-            <q-btn icon="edit" size="sm" flat dense @click="_edit(props)" />
+            <q-btn icon="edit" size="md" flat dense @click="_edit(props)" />
             <q-btn
               icon="delete"
-              size="sm"
+              size="md"
               class="q-ml-sm"
               flat
               dense
@@ -21,7 +21,7 @@
             />
             <q-btn
               icon="lock"
-              size="sm"
+              size="md"
               class="q-ml-sm"
               flat
               dense

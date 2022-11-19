@@ -5,7 +5,23 @@
       <span class="text-black q-mx-md">Admin</span>
     </q-toolbar>
   </q-header>
-  <h3>This is Xuat Hanh Page</h3>
+
+  <q-container>
+    <q-label class="row flex flex-center q-mt-md justify-between">
+      <div class="breadscrum q-ml-xl">
+        <q-breadcrumbs>
+          <q-breadcrumbs-el label=".../Xông đất" />
+          <q-breadcrumbs-el label="Sửa" />
+        </q-breadcrumbs>
+      </div>
+      <div class="vector"></div>
+
+      <div>
+        <q-btn no-caps class="bg-negative text-white q-mr-md">Lưu</q-btn>
+      </div>
+    </q-label>
+
+  </q-container>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -24,3 +40,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.breadscrum {
+  font-size: 17px;
+  top: 100px;
+  background-color: white;
+}
+.vector {
+  height: 1px;
+  width: 72%;
+  background-color: rgb(223, 215, 215);
+}
+</style>

@@ -61,8 +61,12 @@
       </div>
     </div>
     <div>
-      <div class="text-h6">Nội dung</div>
-      <q-card flat bordered style="background-color: #e9eaec"> </q-card>
+      <div class="text-h6">Luận giải</div>
+      <q-card flat bordered style="background-color: #e9eaec; height: 500px">
+        <q-card-section style="font-size: 18px">
+          {{ contain }}
+        </q-card-section>
+      </q-card>
     </div>
   </div>
 </template>
@@ -75,6 +79,7 @@ export default defineComponent({
   setup() {
     const yobOptions = ["1999", "2000", "2001"];
     const drtOption = ["Chính", "Phụ"];
+
     return {
       yob: ref(""),
       drt: ref(""),
@@ -82,6 +87,8 @@ export default defineComponent({
       yobOptions,
       drtOption,
       qeditor: ref(""),
+      contain: "Sao Tứ Lục màu xanh, ở vị trí cung Tốn (Đông Nam) trong Hậu thiên bát quái, thuộc hành Mộc kèm Thủy khí. Là phong trong mộc, là chỗ ở của sao Văn Khúc nên còn gọi là Văn Khúc tinh. Lúc đương vượng thì thăng quan tiến chức, thi cử đỗ đạt. Nếu bị khắc sát thì cẩn thận việc sinh đẻ, dâm bôn, vì ăn chơi sa ngã mà dẫn đến mang bệnh tật, phá bại. Mỗi năm phá tài nhiều nhất vào những tháng 1, tháng 2, tháng 10 và 11. Năm nay Tứ Lục - Văn Khúc Tinh đến phương trung cung, hành Mộc của sao tương khắc với hành thổ ở trung cung và Bát bạch của vận tám vậy nên suy mà khắc nên hung nhiều hơn cát. Gia đình bất lợi về công danh sự nghiệp, khó thăng quan tiến chức, Các bệnh dễ gặp phải như phong thấp, bệnh da liễu, …. Xét tổng thể Tứ Lục vừa có tính cát, vừa có tính hung, nên tuỳ thuộc và từng hướng toạ cụ thể của công trình mà tính chất tốt xấu cũng sẽ tương đối khác khác nhau.. Gợi ý hóa giải: Năm nay Tinh - Cung tương khắc (Mộc -Thổ). Có thể bày ở vị trí này các đồ vật phong thủy thuộc hành hoả và tĩnh để hoá giải như: Đèn lồng đỏ, thảm đỏ, cầu, trụ thạnh anh đỏ, tím, v.v… khiến cho hành Mộc của sao Tứ Lục không tương khắc với hành thổ trung cung mà sinh cho hoả, mà hoả lại sinh cho ngũ hành thổ ở trung cung từ đó mà bớt đi tác hoạ. Khu vực này năm nay ưa tĩnh không ưa động, không phù hợp với thuỷ, nên lưu ý các đồ dùng, vật dụng chứa đựng nhiều nước không sắp xếp ở khu vực này."
+
     };
   },
   created() {

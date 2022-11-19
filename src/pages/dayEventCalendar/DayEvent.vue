@@ -12,7 +12,7 @@
       </q-item>
       <div class="vector"></div>
       <q-item class="q-mr-sm">
-        <q-btn flat class="bg-blue-8 text-white">Sửa</q-btn>
+        <q-btn  to="day_event/fix_dayEvent" flat class="bg-blue-8 text-white">Sửa</q-btn>
       </q-item>
     </q-label>
 
@@ -41,6 +41,7 @@
 
     <q-list class="q-pa-md q-ml-md">
       <q-btn-toggle
+        no-caps
         flat
         v-model="slide"
         :options="[

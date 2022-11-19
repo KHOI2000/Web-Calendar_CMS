@@ -10,17 +10,7 @@
       ></SearchBox>
     </q-toolbar>
   </q-header>
-  <div class="q-ma-xl">
-    <div class="breadscrum">
-      <q-breadcrumbs>
-        <q-breadcrumbs-el label="Sự kiện tết" />
-        <q-breadcrumbs-el label="Xông đất " />
-      </q-breadcrumbs>
-    </div>
-
-    <div class="separator"></div>
-  </div>
-  <div style="margin-left: 12px">
+  <div class="q-mt-xl" style="margin-left: 12px">
     <q-list>
       <q-item class="row flex flex-center q-col-gutter-x-sm">
         <q-item-section class="col-5 q-ml-md q-pl-lg">
@@ -43,7 +33,25 @@
         </q-item-section>
       </q-item>
     </q-list>
-    <HouseDirectionList class="q-mt-md" />
+
+    <q-card style="margin: 20px 66px 0 48px">
+      <q-card-section class="q-pa-none">
+        <q-table
+          :rows="rows"
+          :columns="columns"
+          table-header-class="bg-primary text-white "
+          row-key="index"
+          :rows-per-page-options="[8]"
+        >
+          <template v-slot:body-cell-Action="props">
+            <q-td :props="props">
+              <q-btn icon="edit" size="md" flat dense to="xong-dat/edit" />
+              <q-btn icon="delete" size="md" class="q-ml-sm" flat dense />
+            </q-td>
+          </template>
+        </q-table>
+      </q-card-section>
+    </q-card>
   </div>
   <qPagination class="q-mt-xl" />
 </template>
@@ -51,14 +59,133 @@
 import { defineComponent, ref } from "vue";
 import SearchBox from "components/SearchBox.vue";
 import { usePagesStore } from "src/stores/pages";
-import HouseDirectionList from "src/components/HouseDirection/List.vue";
 import qPagination from "src/components/qPagination.vue";
 
 const PageStore = usePagesStore();
+
+const data = [
+  {
+    index: "Ý Nghĩa",
+    thaitue: "Không xung..",
+    address: "Không xung..",
+    quynhan: "Dương quý..",
+    loc: "-",
+    ma: "-",
+    thiencan: "Quan",
+    result: "Bình thường",
+  },
+  {
+    index: "Điểm",
+    thaitue: "0",
+    address: "0",
+    quynhan: "1",
+    loc: "0",
+    ma: "0",
+    thiencan: "2",
+    result: "Bình thường",
+  },
+  {
+    index: "Đánh giá",
+    thaitue: "Có thể tạm..",
+    address: "Có thể tạm..",
+    quynhan: "-",
+    loc: "-",
+    ma: "-",
+    thiencan: "Lợi cho công",
+    result: "Bình thường",
+  },
+];
+
+const columns = [
+  {
+    name: "Index",
+    field: "index",
+    sortable: false,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "thaitue",
+    label: "Thái tuế",
+    field: "thaitue",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "address",
+    label: "Địa chỉ",
+    field: "address",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "quynhan",
+    label: "Qúy nhân",
+    field: "quynhan",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "loc",
+    label: "Lộc",
+    field: "loc",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "ma",
+    label: "Mã",
+    field: "ma",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+
+  {
+    name: "thiencan",
+    label: "Thiên can",
+    field: "thiencan",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "result",
+    label: "Kết quả",
+    field: "result",
+    sortable: true,
+    align: "left",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+  {
+    name: "Action",
+    label: "Thao tác",
+    field: "Action",
+    sortable: false,
+    align: "center",
+    headerStyle: "font-size: 17px",
+    style: "font-size: 17px",
+  },
+];
+let rows = [];
+for (let i = 0; i < data.length; i++) {
+  rows = data;
+}
 export default defineComponent({
   components: {
     SearchBox,
-    HouseDirectionList,
     qPagination,
   },
   setup() {
@@ -67,6 +194,8 @@ export default defineComponent({
       options1: ref(["Ất sửu", "Giáp tý"]),
       model: ref("Giáp tý"),
       options: ref(["Giáp tý", "Ất sửu"]),
+      rows,
+      columns,
     };
   },
 

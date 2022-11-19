@@ -21,7 +21,7 @@
       </div> -->
       <div class="breadscrum q-ml-xl">
         <q-breadcrumbs>
-          <q-breadcrumbs-el label="Xông đất" />
+          <q-breadcrumbs-el label=".../Xông đất" />
           <q-breadcrumbs-el label="Sửa" />
         </q-breadcrumbs>
       </div>
@@ -32,8 +32,8 @@
       </div>
     </q-label>
 
-    <div class="col q-mr-xl">
-      <div class="row q-col-gutter-x-sm q-ml-xl">
+    <div class="col q-mr-xl q-mt-md q-ml-xl">
+      <div class="row q-col-gutter-x-sm " style="font-size: 18px;">
         <div class="col-6">
           <p>Chủ nhà</p>
           <q-input
@@ -53,8 +53,8 @@
           ></q-input>
         </div>
       </div>
-      <p class="row q-col-gutter-x-sm q-ml-xl text-h6">So sánh vơi Thái Tuế</p>
-      <div class="row q-col-gutter-x-sm q-ml-xl">
+      <p class="row text-h6">So sánh với Thái Tuế</p>
+      <div class="row q-col-gutter-x-sm q-ml-md">
         <div class="col-3"></div>
         <div class="col-3">
           <p>Ý nghĩa</p>
@@ -69,7 +69,7 @@
           <q-input outlined class="q-mb-md" placeholder="Nhập..."></q-input>
         </div>
       </div>
-      <p class="row q-col-gutter-x-sm q-ml-xl text-h6">So sánh vơi Mệnh Chủ</p>
+      <p class="row text-h6">So sánh với Mệnh Chủ</p>
       <p class="row q-col-gutter-x-sm q-ml-xl">Địa chỉ</p>
       <div class="row q-col-gutter-x-sm q-ml-xl">
         <div class="col-3 q-pl-xl">Qúy nhân</div>
@@ -111,16 +111,17 @@
           <p>Đánh giá</p>
           <q-input outlined class="q-mb-md" placeholder="Nhập..."></q-input>
         </div>
-        <div class="col-3 q-pl-xl">Thiên can</div>
-        <div class="col-3">
+
+        <div class="col-3 q-px-xs q-mt-xl ">Thiên can</div>
+        <div class="col-3 q-mt-xl">
           <p>Ý nghĩa</p>
           <q-input outlined class="q-mb-md" placeholder="Nhập..."></q-input>
         </div>
-        <div class="col-3">
+        <div class="col-3 q-mt-xl">
           <p>Điểm</p>
           <q-input outlined class="q-mb-md" placeholder="Nhập..."></q-input>
         </div>
-        <div class="col-3">
+        <div class="col-3 q-mt-xl">
           <p>Đánh giá</p>
           <q-input outlined class="q-mb-md" placeholder="Nhập..."></q-input>
         </div>
