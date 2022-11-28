@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { useAlertStore } from "src/stores/alert.store";
 import router from "src/router";
-import { fetchWrapper } from "src/helpers";
+import { fetchWrapper } from "src/helpers/fetch-wrapper";
 import { Notify } from "quasar";
 
 const baseUrl = `${fetchWrapper.apiUrl}/cms/auth`;
@@ -10,7 +10,7 @@ export const useAuthStore = defineStore({
   id: "user",
   state: () => ({
     // initialize state from local storage to enable user to stay logged in
-    // user: JSON.parse(localStorage.getItem('user')),
+    user: JSON.parse(localStorage.getItem("user")),
   }),
   actions: {
     async login(username, password) {
@@ -24,7 +24,7 @@ export const useAuthStore = defineStore({
         this.user = user;
 
         // store user details and jwt in local storage to keep user logged in between page refreshes
-        // localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
 
         // redirect to previous url or default to home page
         console.log(user);
@@ -52,7 +52,7 @@ export const useAuthStore = defineStore({
     },
     logout() {
       this.user = null;
-      // localStorage.removeItem('user');
+      localStorage.removeItem("user");
       router.push("/account/login");
     },
   },

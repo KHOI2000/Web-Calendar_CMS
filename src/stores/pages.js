@@ -5,19 +5,19 @@ export const usePagesStore = defineStore("page", {
     pagesList: [
       {
         title: "Trang chủ",
-        icon: "home",
+        iconClass: "fa-solid fa-house",
         direct: "/user/home",
         active: false,
       },
       {
         title: "Bài viết",
-        icon: "article",
+        iconClass: "fa-solid fa-newspaper",
         direct: "/user/article",
         active: false,
       },
       {
         title: "Sự kiện",
-        icon: "bookmark",
+        iconClass: "fa-regular fa-bookmark",
         direct: "/user/event",
         active: false,
         subList: [
@@ -37,14 +37,14 @@ export const usePagesStore = defineStore("page", {
       },
       {
         title: "Lich ngày",
-        icon: "calendar_today",
+        iconClass: "fa-regular fa-calendar",
         direct: "/user/day_event",
         active: false,
       },
 
       {
         title: "Sự kiện tết",
-        icon: "public",
+        iconClass: "fa-solid fa-torii-gate",
         direct: "/user/tet_holiday_event",
         active: false,
         subList: [
@@ -68,19 +68,19 @@ export const usePagesStore = defineStore("page", {
       },
       {
         title: "Hướng nhà",
-        icon: "house",
+        iconClass: "fa-solid fa-warehouse",
         direct: "/user/house_direction",
         active: false,
       },
       {
         title: "Thành viên",
-        icon: "groups",
+        iconClass: "fa-solid fa-user-group",
         direct: "/user/membership",
         active: false,
       },
       {
         title: "Cài đặt",
-        icon: "settings",
+        iconClass: "fa-solid fa-gear",
         direct: "/user/setting",
         active: false,
       },

@@ -13,10 +13,13 @@
 <script>
 import { defineComponent } from "vue";
 import { usePagesStore } from "src/stores/pages";
+import { useAuthStore } from "src/stores/user.store";
+const store = useAuthStore();
 const PageStore = usePagesStore();
 export default defineComponent({
   name: "IndexPage",
   created() {
+    console.log(store.user);
     const Path = window.location.hash;
     for (var i of PageStore.pagesList) {
       if (Path.indexOf(i.direct) != -1) {

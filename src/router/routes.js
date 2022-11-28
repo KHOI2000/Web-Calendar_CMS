@@ -5,8 +5,14 @@ const routes = [
     children: [
       { path: "home", component: () => import("pages/IndexPage.vue") },
       { path: "article", component: () => import("pages/Article/Article.vue") },
-      { path: "day_event", component: () => import("src/pages/dayEventCalendar/DayEvent.vue") },
-      { path: "day_event/fix_dayEvent", component: () => import("src/pages/dayEventCalendar/fixDayEvent.vue") },
+      {
+        path: "day_event",
+        component: () => import("src/pages/dayEventCalendar/DayEvent.vue"),
+      },
+      {
+        path: "day_event/fix_dayEvent",
+        component: () => import("src/pages/dayEventCalendar/fixDayEvent.vue"),
+      },
 
       {
         path: "event",
@@ -73,6 +79,10 @@ const routes = [
       {
         path: "tet_holiday_event/tu-vi-van-han",
         component: () => import("pages/TetHoliday/TuViVanHan.vue"),
+      },
+      {
+        path: "tet_holiday_event/tu-vi-van-han/edit",
+        component: () => import("pages/TetHoliday/TuViVanHanEdit.vue"),
       },
     ],
   },

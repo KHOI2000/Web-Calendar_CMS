@@ -59,6 +59,7 @@ import SearchBox from "components/SearchBox.vue";
 import { useArticleStore } from "stores/article.store";
 import ArticleInfo from "components/ArticleInfo.vue";
 import { usePagesStore } from "src/stores/pages";
+
 const PageStore = usePagesStore();
 
 const store = useArticleStore();

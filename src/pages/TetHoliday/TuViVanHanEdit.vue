@@ -10,6 +10,7 @@
       <q-breadcrumbs>
         <q-breadcrumbs-el label="Sự kiện tết" />
         <q-breadcrumbs-el label="Vận hạn" />
+        <q-breadcrumbs-el label="Sửa" />
       </q-breadcrumbs>
     </div>
     <div class="Save-btn">
@@ -18,7 +19,7 @@
         no-caps
         size="17px"
         color="primary"
-        to="/user/tet_holiday_event/tu-vi-van-han/edit"
+        to="/user/tet_holiday_event/phong_thuy/edit"
       ></q-btn>
     </div>
     <div class="separator"></div>
@@ -27,116 +28,69 @@
     <div class="row q-my-xl">
       <div class="col-6 q-pr-md">
         <div class="text-h6">Ngày/tháng/năm sinh</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="yob"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="dob" :rules="['dob']">
+          <template v-slot:append>
+            <q-icon name="event" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="dob" mask="DD/MM/YYYY">
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
       </div>
       <div class="col-6 q-pl-md">
         <div class="text-h6">Giới tính</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="drt"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="sex" />
       </div>
     </div>
     <div class="row q-my-xl">
       <div class="col-6 q-pr-md">
         <div class="text-h6">Công danh</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="yob"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="carrier" />
       </div>
       <div class="col-6 q-pl-md">
         <div class="text-h6">Tiền bạc</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="drt"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="finacy" />
       </div>
     </div>
     <div class="row q-my-xl">
       <div class="col-6 q-pr-md">
         <div class="text-h6">Gia đạo</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="yob"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="family" />
       </div>
       <div class="col-6 q-pl-md">
         <div class="text-h6">Tình cảm</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="drt"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="love" />
       </div>
     </div>
     <div class="row q-my-xl">
       <div class="col-6 q-pr-md">
         <div class="text-h6">Sực khoẻ</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="yob"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="health" />
       </div>
       <div class="col-6 q-pl-md">
         <div class="text-h6">Xuất hành</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="drt"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="journey" />
       </div>
     </div>
     <div class="q-my-xl">
       <div class="">
         <div class="text-h6">Tóm lại</div>
-        <q-input
-          behavior="menu"
-          outlined
-          class="text-h6"
-          v-model="yob"
-          popup-content-class="text-h6"
-          disable
-        />
+        <q-input outlined class="text-h6" v-model="conclusion" />
       </div>
     </div>
   </div>
 </template>
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { usePagesStore } from "src/stores/pages";
 const PageStore = usePagesStore();
 
@@ -149,6 +103,19 @@ export default defineComponent({
         i.active = true;
       } else i.active = false;
     }
+  },
+  setup() {
+    return {
+      dob: ref(""),
+      sex: ref(""),
+      carrier: ref(""),
+      financy: ref(""),
+      family: ref(""),
+      love: ref(""),
+      health: ref(""),
+      journey: ref(""),
+      conclusion: ref(""),
+    };
   },
 });
 </script>
@@ -173,8 +140,5 @@ export default defineComponent({
 }
 .separator {
   border-bottom: 3px solid #e9eaec;
-}
-.q-input {
-  background-color: #e9eaec;
 }
 </style>

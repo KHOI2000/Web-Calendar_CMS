@@ -9,8 +9,8 @@
       :class="{ 'bg-primary': active }"
       @click="handle"
     >
-      <q-item-section v-if="icon" avatar>
-        <q-icon :name="icon" />
+      <q-item-section v-if="iconClass" avatar>
+        <q-icon :class="iconClass"></q-icon>
       </q-item-section>
 
       <q-item-section>
@@ -53,7 +53,7 @@ export default defineComponent({
       default: "/",
     },
 
-    icon: {
+    iconClass: {
       type: String,
       default: "",
     },
@@ -76,6 +76,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .arrow {
   position: absolute;

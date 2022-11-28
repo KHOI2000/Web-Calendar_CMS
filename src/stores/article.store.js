@@ -4,8 +4,9 @@ import { fetchWrapper } from "src/helpers";
 const baseUrl = `${fetchWrapper.apiUrl}/content/news/`;
 
 export const useArticleStore = defineStore("article", {
+  id: "article",
   state: () => ({
-    articleList: [],
+    articleList: JSON.parse(localStorage.getItem("articleList")),
   }),
 
   getters: {
@@ -23,8 +24,9 @@ export const useArticleStore = defineStore("article", {
       console.log("code go here");
       try {
         const res = await fetchWrapper.get(`${baseUrl}`);
-        console.log(res.data);
+
         this.articleList = res.data;
+        localStorage.setItem("articleList", JSON.stringify(this.articleList));
       } catch (error) {
         console.log(error);
       }
