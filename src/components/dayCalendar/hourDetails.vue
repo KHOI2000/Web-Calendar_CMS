@@ -9,8 +9,8 @@
     >
       <template v-slot:body-cell-Action="props">
         <q-td :props="props">
-          <q-btn icon="edit" size="md" flat dense />
-          <q-btn icon="delete" size="md" class="q-ml-sm" flat dense />
+          <q-btn icon="edit_note" size="18px" flat dense style="margin-left: 12px;" />
+          <q-btn icon="delete_outline" size="18px" flat dense />
         </q-td>
       </template>
     </q-table>

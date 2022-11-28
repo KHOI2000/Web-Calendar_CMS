@@ -32,7 +32,7 @@
         >
           <template v-slot:body-cell-Action="props">
             <q-td :props="props">
-              <q-btn icon="edit" size="md" flat dense/>
+              <q-btn icon="edit_note" size="20px" flat dense to="xuat-hanh/edit_xuathanh" />
             </q-td>
           </template>
         </q-table>

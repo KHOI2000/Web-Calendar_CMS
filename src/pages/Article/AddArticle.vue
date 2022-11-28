@@ -26,7 +26,7 @@
 
         <div
           class="row q-ml-md q-mt-md q-py-md"
-          style="border: 1px solid #e9eaec; width: 95%; height: 350px"
+          style="border: 1px solid #e9eaec; width: 95%; height: 350px; border-radius: 8px"
         >
           <q-list>
             <q-item avatar class="col-4 q-mr-md">
@@ -59,16 +59,6 @@
                 placeholder="Nhập tiêu đề.."
               />
             </q-item>
-
-            <!-- <q-item class="row flex items-center q-pa-sx justify-between">
-              <span>Tác giả:</span>
-              <q-input
-                style="width: 426px"
-                outlined
-                v-model="inputAuthor"
-                placeholder="Tác giả.."
-              />
-            </q-item> -->
 
             <q-item class="row flex items-center q-pa-sx justify-between">
               <span>Link import:</span>
@@ -131,7 +121,6 @@
         <!-- <div v-for="article in List" :key="article">
           <qCategory class="q-ma-md" v-bind="article" />
         </div> -->
-
       </template>
     </q-splitter>
   </q-container>
@@ -146,7 +135,7 @@ import SearchBox from "components/SearchBox.vue";
 import { useArticleStore } from "stores/article.store";
 
 const store = useArticleStore();
-store.update();
+store.getArticle();
 
 export default defineComponent({
   name: "AddArticle",
@@ -162,7 +151,6 @@ export default defineComponent({
       dialog: ref(false),
       cancelEnabled: ref(""),
       inputTitle: this.title,
-      // inputAuthor: this.author,
       inputLink: this.Link,
     };
   },
@@ -175,14 +163,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    // date: {
-    //   type: Date,
-    //   required: true,
-    // },
-    // author: {
-    //   type: String,
-    //   required: true,
-    // },
+
     detailUrl: {
       type: String,
       default: "#",
@@ -200,7 +181,9 @@ export default defineComponent({
     },
   },
   methods: {
-    _Save() {},
+    _Save() {
+
+    },
     _Remove() {
       store.remove(this.id);
     },

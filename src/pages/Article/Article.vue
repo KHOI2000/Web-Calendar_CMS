@@ -29,8 +29,10 @@
 
         <div class="line"></div>
 
-        <q-item clickable v-ripple to="article/manage">
-          <q-btn class="q-mr-sm text-white bg-primary">Quản lý</q-btn>
+        <q-item>
+          <q-btn class="q-mr-sm text-white bg-primary" to="article/manage"
+            >Quản lý</q-btn
+          >
         </q-item>
       </q-list>
     </div>
@@ -38,7 +40,12 @@
     <div class="column q-mt-sm" v-if="isActivate">
       <div
         class="row flex q-ma-sm"
-        style="border: 1px solid #aaa; width: auto; height: 137px"
+        style="
+          border: 1px solid #aaa;
+          width: auto;
+          height: 137px;
+          border-radius: 8px;
+        "
         v-for="article in List"
         :key="article"
       >
@@ -63,7 +70,7 @@ import { usePagesStore } from "src/stores/pages";
 const PageStore = usePagesStore();
 
 const store = useArticleStore();
-store.update();
+store.getArticle();
 
 export default defineComponent({
   name: "ArticleListPage",

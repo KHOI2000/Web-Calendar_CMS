@@ -10,18 +10,18 @@
       >
         <template v-slot:body-cell-Action="props">
           <q-td :props="props">
-            <q-btn icon="edit" size="md" flat dense @click="_edit(props)" />
+            <q-btn icon="edit_note" size="18px" flat dense @click="_edit(props)" />
             <q-btn
-              icon="delete"
-              size="md"
+              icon="delete_outline"
+              size="18px"
               class="q-ml-sm"
               flat
               dense
               @click="_delete(props)"
             />
             <q-btn
-              icon="lock"
-              size="md"
+              icon="lock_outline"
+              size="18px"
               class="q-ml-sm"
               flat
               dense
@@ -130,7 +130,7 @@
   <q-dialog v-model="channgPw">
     <q-card class="text-white card">
       <q-card-section class="q-pa-sm card-header">
-        Thông tin thành viên
+        Đổi mật khẩu
       </q-card-section>
       <q-card-section class="popupBody">
         <div class="row flex items-center">

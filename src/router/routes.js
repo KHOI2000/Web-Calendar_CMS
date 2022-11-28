@@ -77,6 +77,11 @@ const routes = [
         component: () => import("pages/TetHoliday/XuatHanh.vue"),
       },
       {
+        path: "tet_holiday_event/xuat-hanh/edit_xuathanh",
+        component: () => import("pages/TetHoliday/XuatHanhEdit.vue")
+
+      },
+      {
         path: "tet_holiday_event/tu-vi-van-han",
         component: () => import("pages/TetHoliday/TuViVanHan.vue"),
       },

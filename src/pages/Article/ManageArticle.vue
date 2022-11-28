@@ -31,8 +31,8 @@
         </q-item>
         <div class="line"></div>
 
-        <q-item clickable v-ripple to="/user/article">
-          <q-btn class="q-mr-sm text-white bg-primary">Hủy</q-btn>
+        <q-item >
+          <q-btn class="q-mr-sm text-white bg-primary" to="/user/article">Hủy</q-btn>
         </q-item>
       </q-list>
       <q-item
@@ -45,7 +45,7 @@
     <div class="column q-mt-sm">
       <div
         class="row flex q-ma-sm"
-        style="border: 1px solid #aaa; width: auto; height: 137px"
+        style="border: 1px solid #aaa; width: auto; height: 137px; border-radius: 8px"
         v-for="article in List"
         :key="article"
       >
@@ -69,7 +69,7 @@ import ArticleInfo from "../../components/ArticleInfo.vue";
 import { computed } from "vue";
 
 const store = useArticleStore();
-store.update();
+store.getArticle();
 export default {
   name: "ArticleListPage",
   props: {

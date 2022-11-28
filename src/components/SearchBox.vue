@@ -23,7 +23,7 @@ export default defineComponent({
   props: {
     placeholder: {
       type: String,
-      default: "Tim kiem bai viet...",
+      default: "Tìm kiếm bài viết...",
     },
   },
 });

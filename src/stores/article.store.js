@@ -20,7 +20,7 @@ export const useArticleStore = defineStore("article", {
   },
 
   actions: {
-    async update() {
+    async getArticle() {
       console.log("code go here");
       try {
         const res = await fetchWrapper.get(`${baseUrl}`);
@@ -38,17 +38,45 @@ export const useArticleStore = defineStore("article", {
           await fetchWrapper.put(`${baseUrl}` + index, article);
         }
       }
-      this.update();
+      this.getArticle();
     },
-    async remove(index) {
-      console.log(abc);
-      await fetchWrapper.delete(`${baseUrl}` + index);
 
-      this.update();
+    async delete(index) {
+      try {
+        await fetchWrapper.delete(`${baseUrl}` + index);
+        const List = this.articleList;
+        const pos = List.indexOf(List.find((List) => List.id == index));
+        this.articleList.splice(pos, 1);
+        this.getArticle();
+        console.log('abc')
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async add(item) {
+      try {
+        await fetchWrapper.post(`${baseUrl}`, {
+          title: item.title,
+          imageURL: item.imageURL,
+        });
+        this.getArticle();
+      } catch (error) {
+        console.log(error);
+      }
     },
     async edit(item, index) {
-      await fetchWrapper.put(`${baseUrl}` + index, item);
-      this.update();
+      try {
+        await fetchWrapper.put(`${baseUrl}` + index, {
+          title: item.title,
+          author: item.author,
+          link: item.url
+        });
+        this.getArticle()
+
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

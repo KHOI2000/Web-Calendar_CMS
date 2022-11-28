@@ -27,8 +27,8 @@
       </div>
       <div class="vector"></div>
 
-      <q-item to="/user/house_direction">
-        <q-btn no-caps class="bg-negative text-white q-mr-md">Lưu</q-btn>
+      <q-item >
+        <q-btn no-caps class="bg-negative text-white q-mr-md" to="/user/house_direction">Lưu</q-btn>
       </q-item>
     </q-label>
 

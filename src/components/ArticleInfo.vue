@@ -8,13 +8,18 @@
       <q-item-section v-if="imageUrl" avatar>
         <q-img
           src="https://kenh14cdn.com/2019/1/9/4-15470500556681296679573.jpg"
-          style="height: 110px; width: 200px"
+          style="height: 110px; width: 200px; border-radius: 4px"
         />
       </q-item-section>
 
-      <q-item-section class="col q-mb-" >
+      <q-item-section class="col q-mb-xl">
         <div>
-          <q-item-label class="text-h6">{{ articleTitle }}</q-item-label>
+          <q-item-label
+            class="text-h6"
+            style="font-wight: 400; font-style: 'normal'; font-family: 'Roboto'"
+          >
+            {{ articleTitle }}
+          </q-item-label>
         </div>
         <div class="row flex q-mt-md">
           <q-avatar class="q-mr-xs" size="15px">
@@ -73,7 +78,7 @@
       <q-item-section v-if="imageUrl" avatar class="q-mr-lg">
         <q-img
           src="https://kenh14cdn.com/2019/1/9/4-15470500556681296679573.jpg"
-          style="height: 110px; width: 200px"
+          style="height: 110px; width: 200px; border-radius: 4px"
         />
       </q-item-section>
 
@@ -86,16 +91,6 @@
               v-model="fixedTitle"
               class="text-h67"
               placeholder="Nhập tiêu đề: ..."
-            ></q-input>
-          </div>
-
-          <div class="row flex items-center q-pa-sx justify-between">
-            <span>Tác giả:</span>
-            <q-input
-              dense="dense"
-              v-model="fixedAuthor"
-              class="text-h67"
-              placeholder="Tác giả:..."
             ></q-input>
           </div>
 
@@ -134,14 +129,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      required: true,
-    },
-    author: {
-      type: String,
-      default: "Anonynmous",
-    },
     detailUrl: {
       type: String,
       default: "#",
@@ -163,8 +150,6 @@ export default defineComponent({
       edit: true,
       fixedTitle: this.title,
       articleTitle: this.title,
-      articleAuthor: this.author,
-      fixedAuthor: this.author,
       articleLink: this.detailUrl,
       fixedLink: this.detailUrl,
     };
@@ -176,18 +161,15 @@ export default defineComponent({
     _Save() {
       this.edit = true;
       const newItem = {
-        date,
         category,
         title: this.fixedTitle,
-        author: this.fixedAuthor,
         detailUrl: this.fixedLink,
         display: this.display,
       };
       store.edit(newItem, this.id);
     },
     _Remove() {
-      console.log(this.id);
-      store.remove(this.id);
+      store.delete(this.id);
     },
     _chooseHandler(index) {
       store.changeDisplay(index);

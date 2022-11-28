@@ -5,7 +5,7 @@
       <span class="text-black q-mx-md">Admin</span>
       <AddButton label="Thêm thành viên" @click="add = !add"></AddButton>
       <SearchBox
-        style="margin-right: 15%; margin-left: 45px"
+        style="margin-right: 5%; margin-left: 45px"
         placeholder="Tìm kiếm thành viên..."
       ></SearchBox>
     </q-toolbar>
@@ -23,7 +23,7 @@
   <q-dialog v-model="add">
     <q-card class="text-white card">
       <q-card-section class="q-pa-sm card-header">
-        Thông tin thành viên
+        Thêm thành viên 
       </q-card-section>
       <q-card-section class="popupBody">
         <div class="row flex items-center">

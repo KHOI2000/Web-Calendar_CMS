@@ -4,7 +4,7 @@ import router from "src/router";
 import { fetchWrapper } from "src/helpers/fetch-wrapper";
 import { Notify } from "quasar";
 
-const baseUrl = `${fetchWrapper.apiUrl}/cms/auth`;
+const baseUrl = `https://test-calendar-api.ziz.vn/cms/auth`;
 
 export const useAuthStore = defineStore({
   id: "user",
