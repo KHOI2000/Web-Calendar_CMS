@@ -25,7 +25,7 @@
           <q-avatar class="q-mr-xs" size="15px">
             <img src="../assets/Vector.png" />
           </q-avatar>
-          <q-item-label class=""> {{ category }} </q-item-label>
+          <q-item-label class=""> {{ author }} </q-item-label>
         </div>
         <!-- <div class="row flex items-center q-mt-md">
           <q-item-label class="row flex q-mb-md">
@@ -67,7 +67,7 @@
           size="35px"
           class="q-mx-sm btn-option"
           name="delete_outline"
-          @click="_Remove()"
+          @click="deleteArticle"
         />
       </div>
     </q-option>
@@ -129,6 +129,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+    },
     detailUrl: {
       type: String,
       default: "#",
@@ -138,7 +142,7 @@ export default defineComponent({
     },
     display: {
       type: Boolean,
-      required: false,
+      required: true,
     },
     id: {
       type: Number,
@@ -161,14 +165,13 @@ export default defineComponent({
     _Save() {
       this.edit = true;
       const newItem = {
-        category,
         title: this.fixedTitle,
         detailUrl: this.fixedLink,
         display: this.display,
       };
       store.edit(newItem, this.id);
     },
-    _Remove() {
+    deleteArticle() {
       store.delete(this.id);
     },
     _chooseHandler(index) {
