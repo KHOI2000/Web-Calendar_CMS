@@ -12,10 +12,7 @@
   </q-header>
   <div class="q-ma-xl">
     <div class="breadscrum">
-      <q-breadcrumbs>
-        <q-breadcrumbs-el label="Sự kiện" />
-        <q-breadcrumbs-el label="Danh sách  cảnh báo " />
-      </q-breadcrumbs>
+      Hướng nhà
     </div>
 
     <div class="separator"></div>
@@ -89,6 +86,7 @@ export default defineComponent({
   left: 268px;
   background-color: white;
   padding: 0 30px 0 30px;
+  color: #707274;
 }
 .vector {
   height: 1px;

@@ -25,23 +25,8 @@
           <q-avatar class="q-mr-xs" size="15px">
             <img src="../assets/Vector.png" />
           </q-avatar>
-          <q-item-label class=""> {{ category }} </q-item-label>
+          <q-item-label class=""> {{ author }} </q-item-label>
         </div>
-        <!-- <div class="row flex items-center q-mt-md">
-          <q-item-label class="row flex q-mb-md">
-            <q-avatar class="q-mr-xs" style="height: 18px; width: 16px">
-              <img src="../assets/Calendar.png" alt="" />
-            </q-avatar>
-            <p>{{ date }}</p>
-          </q-item-label>
-
-          <q-item-label class="row flex q-ml-xl">
-            <q-avatar class="q-mr-xs" style="height: 18px; width: 16px">
-              <img src="../assets/user.png" />
-            </q-avatar>
-            <p>{{ articleAuthor }}</p>
-          </q-item-label>
-        </div> -->
       </q-item-section>
     </q-item>
     <q-option class="row flex q-ma-md justify-around">
@@ -51,7 +36,7 @@
           v-model="checked"
           checked-icon="star"
           unchecked-icon="star_border"
-          @click="_chooseHandler()"
+          @click="chooseHandler()"
         />
 
         <q-icon
@@ -59,7 +44,7 @@
           size="35px"
           class="q-mx-sm btn-option"
           name="edit_note"
-          @click="_EditArticle()"
+          @click="EditArticle()"
         />
 
         <q-icon
@@ -67,7 +52,7 @@
           size="35px"
           class="q-mx-sm btn-option"
           name="delete_outline"
-          @click="_Remove()"
+          @click="deleteArticle()"
         />
       </div>
     </q-option>
@@ -129,19 +114,24 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+    },
     detailUrl: {
       type: String,
       default: "#",
     },
     imageUrl: {
       type: String,
+      required: true
     },
     display: {
       type: Boolean,
-      required: false,
+      required: true,
     },
-    id: {
-      type: Number,
+    _id: {
+      type: String,
     },
   },
   data() {
@@ -152,26 +142,29 @@ export default defineComponent({
       articleTitle: this.title,
       articleLink: this.detailUrl,
       fixedLink: this.detailUrl,
+      fixedImage: this.imageUrl,
     };
   },
   methods: {
-    _EditArticle() {
+    EditArticle() {
       this.edit = false;
     },
     _Save() {
       this.edit = true;
       const newItem = {
-        category,
         title: this.fixedTitle,
         detailUrl: this.fixedLink,
         display: this.display,
+        author: this.author,
+        category: this.category,
+
       };
-      store.edit(newItem, this.id);
+      store.edit(newItem, this._id);
     },
-    _Remove() {
-      store.delete(this.id);
+    deleteArticle() {
+      store.delete(this._id);
     },
-    _chooseHandler(index) {
+    chooseHandler(index) {
       store.changeDisplay(index);
     },
   },

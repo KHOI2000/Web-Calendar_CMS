@@ -22,7 +22,6 @@ export const useEventStore = defineStore("event", {
         await axios.delete("http://localhost:3000/Event/" + index);
         const List = this.Event;
         const pos = List.indexOf(List.find((List) => List.id == index));
-        console.log(this.Event);
         this.Event.splice(pos, 1);
       } catch (error) {
         console.log(error);

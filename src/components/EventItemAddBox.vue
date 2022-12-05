@@ -15,7 +15,6 @@
       </div>
       <div class="text q-mx-md">
         Tiêu đề
-
         <q-input outlined class="input" v-model="title"></q-input>
       </div>
     </div>

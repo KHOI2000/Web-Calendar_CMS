@@ -8,17 +8,6 @@
 
   <q-container>
     <q-label class="row flex flex-center q-mt-md justify-between">
-      <!-- <q-item
-        class="q-ml-sm"
-        style="
-          font-weight: 400;
-          font-size: 18px;
-          font-family: 'Roboto';
-          color: #6d767e;
-        "
-      >
-        Hướng nhà
-      </q-item> -->
       <div class="breadscrum q-ml-xl">
         <q-breadcrumbs>
           <q-breadcrumbs-el label="Hướng nhà" />

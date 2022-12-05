@@ -16,10 +16,16 @@
                 size="18px"
                 flat
                 dense
-                style="margin-left: 12px;"
+                style="margin-left: 12px"
                 to="/user/house_direction/edit"
               />
-              <q-btn icon="delete_outline" size="18px" class="q-ml-sm" flat dense />
+              <q-btn
+                icon="delete_outline"
+                size="18px"
+                class="q-ml-sm"
+                flat
+                dense
+              />
             </q-td>
           </template>
         </q-table>
@@ -33,49 +39,49 @@ import { defineComponent } from "vue";
 
 const data = [
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",
   },
   {
-    name: "Ngày giải phóng Thủ đô",
+    name: "Chính Tây Bắc",
     dosolaban: "292.5-307.4",
     phuongvi: "Càn",
     ynghia: "Hơi tốt",

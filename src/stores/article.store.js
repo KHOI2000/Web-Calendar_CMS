@@ -24,22 +24,14 @@ export const useArticleStore = defineStore("article", {
       console.log("code go here");
       try {
         const res = await fetchWrapper.get(`${baseUrl}`);
-
         this.articleList = res.data;
         localStorage.setItem("articleList", JSON.stringify(this.articleList));
       } catch (error) {
         console.log(error);
       }
     },
-    async changeDisplay(index) {
-      for (let article of this.articleList) {
-        if (article.id == index) {
-          article.display = !article.display;
-          await fetchWrapper.put(`${baseUrl}` + index, article);
-        }
-      }
-      this.getArticle();
-    },
+
+
 
     async delete(index) {
       try {
@@ -47,10 +39,25 @@ export const useArticleStore = defineStore("article", {
         const List = this.articleList;
         const pos = List.indexOf(List.find((List) => List.id == index));
         this.articleList.splice(pos, 1);
-        this.getArticle();
-        console.log('abc')
+        this.getArticle()
       } catch (error) {
         console.log(error)
+      }
+    },
+    async edit(article, index) {
+      console.log(index)
+      try {
+        await fetchWrapper.put(`${baseUrl}` + index, {
+          title:article.title,
+          link:article.detailUrl,
+          author: article.author,
+          imageURL: article.imageURL,
+          category: article.category
+        });
+        this.articleList()
+
+      } catch (error) {
+        console.log(error);
       }
     },
 
@@ -65,18 +72,15 @@ export const useArticleStore = defineStore("article", {
         console.log(error);
       }
     },
-    async edit(item, index) {
-      try {
-        await fetchWrapper.put(`${baseUrl}` + index, {
-          title: item.title,
-          author: item.author,
-          link: item.url
-        });
-        this.getArticle()
 
-      } catch (error) {
-        console.log(error);
+    async changeDisplay(index) {
+      for (let article of this.articleList) {
+        if (article.id == index) {
+          article.display = !article.display;
+          await fetchWrapper.put(`${baseUrl}` + index, article);
+        }
       }
+      this.getArticle();
     },
   },
 });
