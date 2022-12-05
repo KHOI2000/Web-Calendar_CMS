@@ -31,15 +31,33 @@ export const useArticleStore = defineStore("article", {
       }
     },
 
+
+
     async delete(index) {
       try {
         await fetchWrapper.delete(`${baseUrl}` + index);
         const List = this.articleList;
         const pos = List.indexOf(List.find((List) => List.id == index));
         this.articleList.splice(pos, 1);
-        localStorage.removeItem('articlelist')
+        this.getArticle()
       } catch (error) {
         console.log(error)
+      }
+    },
+    async edit(article, index) {
+      console.log(index)
+      try {
+        await fetchWrapper.put(`${baseUrl}` + index, {
+          title:article.title,
+          link:article.detailUrl,
+          author: article.author,
+          imageURL: article.imageURL,
+          category: article.category
+        });
+        this.articleList()
+
+      } catch (error) {
+        console.log(error);
       }
     },
 
@@ -50,19 +68,6 @@ export const useArticleStore = defineStore("article", {
           imageURL: item.imageURL,
         });
         this.getArticle();
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async edit(item, index) {
-      try {
-        await fetchWrapper.put(`${baseUrl}` + index, {
-          title: item.title,
-          author: item.author,
-          link: item.url
-        });
-        this.getArticle()
-
       } catch (error) {
         console.log(error);
       }
